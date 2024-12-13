@@ -80,9 +80,11 @@ Contains subdirectories:
 Face Detector
 ### 8.	face_detector/
 Contains files for face detection:
-1.	deploy.prototxt: A configuration file used by the Caffe deep learning framework. It defines the architecture of the neural network for the face detection task.
 
-Key Components:
+#### 1.	deploy.prototxt: 
+A configuration file used by the Caffe deep learning framework. It defines the architecture of the neural network for the face detection task.
+
+##### Key Components:
 
 1.	Input Layer:
 Specifies the input dimensions for the network (e.g., 300x300x3 for an RGB image of size 300x300).
@@ -95,7 +97,58 @@ Alongside bounding boxes, the network predicts confidence scores for whether the
 5.	Layer Connections:
 Defines how layers are connected, including pooling, activation, and normalization layers.
 
-2.	res10_300x300_ssd_iter_140000.caffemodel: Pre-trained weights for the face detection model.
+##### Usage in Project:
+Loaded in gather_examples.py and liveness_demo.py to define the network architecture for detecting faces.
+
+#### 2.	res10_300x300_ssd_iter_140000.caffemodel: 
+A pre-trained model file for the SSD (Single Shot Multibox Detector) framework using the ResNet-10 backbone. Stores the trained weights and biases for all layers of the network.
+
+##### Key Details:
+
+1.	Pre-Trained on Face Datasets:
+Trained on datasets like WIDER FACE to detect human faces with high accuracy and reliability.
+2.	ResNet-10 Backbone:
+A lightweight version of the ResNet architecture optimized for speed and performance in real-time applications.
+3.	Single Shot Multibox Detector (SSD):
+A fast and efficient object detection framework. Detects objects (faces) in a single pass through the network.
+
+##### Outputs:
+
+•	Bounding box coordinates.
+
+•	Confidence scores for each detected face.
+
+##### Purpose:
+
+•	Provides the learned weights required to detect faces in images or video frames.
+
+•	Can identify faces of varying sizes and orientations in real time.
+
+##### Usage in Project:
+
+•	Loaded in gather_examples.py and liveness_demo.py using OpenCV’s cv2.dnn.readNetFromCaffe function.
+
+•	Combined with deploy.prototxt to initialize the face detection model and run inference.
+
+#### How They Work Together
+
+##### 1.	Initialization:
+
+o	The deploy.prototxt file is loaded to define the network structure.
+
+o	The res10_300x300_ssd_iter_140000.caffemodel file is loaded to provide the trained weights for each layer.
+
+##### 2.	Inference:
+
+o	Input images (e.g., a video frame) are preprocessed and passed through the network.
+
+o	The network outputs:
+
+•	Bounding boxes for detected faces.
+
+•	Confidence scores indicating the likelihood that the region contains a face.
+
+
 
 ### 9.	videos/
 o	Contains demonstration videos:
