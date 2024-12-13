@@ -1,4 +1,4 @@
-# Explanation
+# UNDERSTANDING THE PROJECT
 
 ## Python Scripts
 
