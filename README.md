@@ -2,35 +2,102 @@
 
 ## Python Scripts
 
-1.	gather_examples.py
-o	Likely used for collecting and organizing examples of real and fake face images/videos to create a dataset.
-2.	liveness_demo.py
-o	A demonstration script that likely shows the face liveliness detection model in action.
-3.	livenessnet.py
+### 1.	gather_examples.py
+This script extracts face images from video streams to create a dataset for training or testing.
+
+
+#### Command-line arguments:
+
+--input: Path to the input video file.
+
+--output: Directory to save cropped face images.
+
+--detector: Path to the OpenCV face detector files (deploy.prototxt and .caffemodel).
+
+--confidence: Minimum confidence threshold for face detection.
+
+--skip: Number of frames to skip between detections.
+
+### 2.	liveness_demo.py
+This script runs a real-time demonstration of the liveness detection model using a webcam feed.
+
+#### Takes command-line arguments for:
+
+--model: Path to the trained liveness detection model.
+
+--le: Path to the label encoder.
+
+--detector: Path to the face detector.
+
+--confidence: Minimum confidence threshold for face detection.
+
+
+### 3.	livenessnet.py
 o	Defines the neural network architecture used for liveliness detection.
-4.	train.py
-o	The main training script that loads the dataset, trains the model, and saves it for future use.
+
+Network Architecture:
+1.	Input Layer:
+Accepts input images of specified dimensions (width, height, depth).
+2.	Convolutional Layers:
+Two sets of Conv2D → ReLU → BatchNormalization → MaxPooling2D layers.
+Dropout applied after each set to reduce overfitting.
+3.	Fully Connected Layer:
+A dense layer with 64 units and ReLU activation.
+Dropout applied for regularization.
+4.	Output Layer:
+A dense layer with a softmax activation function to output probabilities for "real" or "fake."
+
+
+### 4.	train.py
+The main training script that loads the dataset, trains the model, and saves it for future use.
+
+#### Command-line arguments:
+
+--dataset: Path to the dataset directory containing subdirectories for "real" and "fake" images
+
+--model: Path to save the trained model.
+
+--le: Path to save the label encoder.
+
+--plot: Path to save the training plot.
+
 
 Pre-trained Models and Pickled Objects
-5.	liveness.model
-o	The trained liveliness detection model.
-6.	le.pickle
-o	Likely a pickled label encoder for encoding class labels (e.g., "real" or "fake").
+### 5.	liveness.model
+The trained liveliness detection model.
+Used in liveness_demo.py for real-time face liveness classification.
 
+### 6.	le.pickle
+A serialized label encoder object that maps numerical class indices to human-readable labels ("real" or "fake").
+Used in liveness_demo.py to convert model predictions into labels.
 Dataset
 
-7.	dataset/
+### 7.	dataset/
 Contains subdirectories:
 1.	fake/: Sample fake face images (e.g., 2464.png, 2465.png).
 2.	real/: Sample real face images (e.g., 1604.png, 1605.png).
 
 Face Detector
-8.	face_detector/
+### 8.	face_detector/
 Contains files for face detection:
-1.	deploy.prototxt: Configuration file for a pre-trained face detection model.
+1.	deploy.prototxt: A configuration file used by the Caffe deep learning framework. It defines the architecture of the neural network for the face detection task.
+
+Key Components:
+
+1.	Input Layer:
+Specifies the input dimensions for the network (e.g., 300x300x3 for an RGB image of size 300x300).
+2.	Convolutional Layers:
+Series of convolutional layers designed to extract spatial features from images.
+3.	Bounding Box Regression:
+The network predicts bounding box coordinates for detected faces in the image.
+4.	Confidence Scores:
+Alongside bounding boxes, the network predicts confidence scores for whether the detected region contains a face.
+5.	Layer Connections:
+Defines how layers are connected, including pooling, activation, and normalization layers.
+
 2.	res10_300x300_ssd_iter_140000.caffemodel: Pre-trained weights for the face detection model.
-Videos
-9.	videos/
+
+### 9.	videos/
 o	Contains demonstration videos:
 1.	fake.mp4: Likely a video of a fake face.
 2.	real.mp4: Likely a video of a real face.
