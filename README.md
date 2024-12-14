@@ -33,7 +33,7 @@ This script runs a real-time demonstration of the liveness detection model using
 
 
 ### 3.	livenessnet.py
-o	Defines the neural network architecture used for liveliness detection.
+Defines the neural network architecture used for liveliness detection.
 
 Network Architecture:
 1.	Input Layer:
@@ -114,39 +114,39 @@ A fast and efficient object detection framework. Detects objects (faces) in a si
 
 ##### Outputs:
 
-•	Bounding box coordinates.
+* Bounding box coordinates.
 
-•	Confidence scores for each detected face.
+* Confidence scores for each detected face.
 
 ##### Purpose:
 
-•	Provides the learned weights required to detect faces in images or video frames.
+* Provides the learned weights required to detect faces in images or video frames.
 
-•	Can identify faces of varying sizes and orientations in real time.
+* Can identify faces of varying sizes and orientations in real time.
 
 ##### Usage in Project:
 
-•	Loaded in gather_examples.py and liveness_demo.py using OpenCV’s cv2.dnn.readNetFromCaffe function.
+* Loaded in gather_examples.py and liveness_demo.py using OpenCV’s cv2.dnn.readNetFromCaffe function.
 
-•	Combined with deploy.prototxt to initialize the face detection model and run inference.
+* Combined with deploy.prototxt to initialize the face detection model and run inference.
 
 #### How They Work Together
 
 ##### 1.	Initialization:
 
-o	The deploy.prototxt file is loaded to define the network structure.
+•	The deploy.prototxt file is loaded to define the network structure.
 
-o	The res10_300x300_ssd_iter_140000.caffemodel file is loaded to provide the trained weights for each layer.
+•	The res10_300x300_ssd_iter_140000.caffemodel file is loaded to provide the trained weights for each layer.
 
 ##### 2.	Inference:
 
-o	Input images (e.g., a video frame) are preprocessed and passed through the network.
+* Input images (e.g., a video frame) are preprocessed and passed through the network.
 
-o	The network outputs:
+* The network outputs:
 
-•	Bounding boxes for detected faces.
-
-•	Confidence scores indicating the likelihood that the region contains a face.
+   •	Bounding boxes for detected faces.  
+  
+   •	Confidence scores indicating the likelihood that the region contains a face.
 
 
 
