@@ -151,7 +151,7 @@ A fast and efficient object detection framework. Detects objects (faces) in a si
 
 
 ### 9.	videos/
-o	Contains demonstration videos:
+* Contains demonstration videos:
 1.	fake.mp4: Likely a video of a fake face.
 2.	real.mp4: Likely a video of a real face.
 
