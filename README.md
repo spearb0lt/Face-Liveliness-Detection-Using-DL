@@ -1,8 +1,10 @@
 
 
 
+![image](https://github.com/user-attachments/assets/a9d3c657-d4b2-4267-a93a-53952f823d25)
 
-![image](https://github.com/user-attachments/assets/6f8296ac-0eb5-4f67-ac83-fb69d9f65855)
+
+
 
 
 # UNDERSTANDING THE PROJECT
