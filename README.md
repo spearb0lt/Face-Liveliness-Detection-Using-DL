@@ -1,3 +1,10 @@
+
+
+
+
+![image](https://github.com/user-attachments/assets/6f8296ac-0eb5-4f67-ac83-fb69d9f65855)
+
+
 # UNDERSTANDING THE PROJECT
 
 ## Python Scripts
